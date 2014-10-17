@@ -19,7 +19,7 @@ module RailsKindeditor
     def kindeditor_upload_json_path(*args)
       options = args.extract_options!
       owner_id_query_string = options[:owner_id] ? "?owner_id=#{options[:owner_id]}" : ''
-      "#{main_app_root_url}kindeditor/upload#{owner_id_query_string}"
+      #"#{main_app_root_url}kindeditor/upload#{owner_id_query_string}"
     end
     
     def kindeditor_file_manager_json_path
@@ -60,7 +60,7 @@ module RailsKindeditor
       options.reverse_merge!(:width => '100%')
       options.reverse_merge!(:height => 300)
       options.reverse_merge!(:allowFileManager => true)
-      options.merge!(:uploadJson => kindeditor_upload_json_path(:owner_id => options.delete(:owner_id)))
+      options.reverse_merge!(:uploadJson => kindeditor_upload_json_path(:owner_id => options.delete(:owner_id)))
       options.merge!(:fileManagerJson => kindeditor_file_manager_json_path)
       if options[:simple_mode] == true
         options.merge!(:items => %w{fontname fontsize | forecolor hilitecolor bold italic underline removeformat | justifyleft justifycenter justifyright insertorderedlist insertunorderedlist | emoticons image link})
